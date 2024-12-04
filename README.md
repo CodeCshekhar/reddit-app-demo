@@ -1,7 +1,7 @@
 # Reddit Clone App
 
 ## Overview
-This is a Reddit-like application built using Android development with Gradle as the build system. The app provides key features inspired by the Reddit platform, allowing users to browse, interact with, and share content.
+This is a Reddit-like application built using App development with Gradle as the build system. The app provides key features inspired by the Reddit platform, allowing users to browse, interact with, and share content.
 
 ## Features
 - User authentication and registration
@@ -13,9 +13,8 @@ This is a Reddit-like application built using Android development with Gradle as
 - Personalized feed
 
 ## Prerequisites
-- Android Studio
+- Intellij IDE
 - Java Development Kit (JDK) 11 or later
-- Android SDK
 
 ## Tech Stack
 - Language: Java
@@ -33,16 +32,10 @@ This is a Reddit-like application built using Android development with Gradle as
 git clone https://github.com/CodeCshekahr/Reddit-App.git
 cd Reddit-App
 ```
-
-### 2. Configure Firebase
-- Create a Firebase project
-- Add `google-services.json` to the `app` directory
-- Enable Authentication and Firestore
-
-### 3. Build the Project
+### 2. Build the Project
 Open the project in Intellij IDE and let Gradle sync the dependencies.
 
-### 4. Run the App
+### 3. Run the App
 - Connect an Intellij IDE 
 - Click 'Run' in Intellij IDE 
 
@@ -52,26 +45,24 @@ The project uses Gradle for dependency management and build automation. Key conf
 ### App-level `build.gradle`
 ```groovy
 plugins {
-    id 'com.android.application'
-    id 'dagger.hilt.android.plugin'
-    id 'com.google.gms.google-services'
+    id 'application'
+    id 'java'
+}
+
+group 'com.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
 }
 
 dependencies {
-    // Android core dependencies
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.5.0'
-    
-    // Firebase
-    implementation 'com.google.firebase:firebase-auth:21.0.3'
-    implementation 'com.google.firebase:firebase-firestore:24.0.1'
-    
-    // Networking
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    
-    // Dependency Injection
-    implementation 'com.google.dagger:hilt-android:2.40.5'
-    annotationProcessor 'com.google.dagger:hilt-android-compiler:2.40.5'
+    implementation 'com.squareup.okhttp3:okhttp:4.11.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
+}
+
+application {
+    mainClass = 'com.electra.RedditApp'
 }
 ```
 
@@ -81,8 +72,7 @@ dependencies {
 
 Run tests using:
 ```bash
-./gradlew test
-./gradlew connectedAndroidTest
+./gradlew RedditTestApp
 ```
 
 ## Contributing
