@@ -13,11 +13,14 @@ This is a Reddit-like application built using App development with Gradle as the
 - Personalized feed
 
 ## Prerequisites
-- Intellij IDE
+- IntelliJ IDEA (recommended)
 - Java Development Kit (JDK) 11 or later
+- Android SDK
+- Postman (for API testing)
 
 ## Tech Stack
 - Language: Java
+- IDE: IntelliJ IDEA
 - Build Tool: Gradle
 - Architecture: MVVM (Model-View-ViewModel)
 - Database: Room Persistence Library
@@ -32,48 +35,111 @@ This is a Reddit-like application built using App development with Gradle as the
 git clone https://github.com/CodeCshekhar/Reddit-App.git
 cd Reddit-App
 ```
-### 2. Build the Project
-Open the project in Intellij IDE and let Gradle sync the dependencies.
 
-### 3. Run the App
-- Connect an Intellij IDE 
-- Click 'Run' in Intellij IDE 
+### 2. Open in IntelliJ IDEA
+- Launch IntelliJ IDEA
+- Select "Open" and navigate to the project directory
+- Allow Gradle to sync and download dependencies
 
-## Gradle Configuration
-The project uses Gradle for dependency management and build automation. Key configurations are in `build.gradle` files:
+### 3. Configure Firebase
+- Create a Firebase project
+- Add `google-services.json` to the `app` directory
+- Enable Authentication and Firestore
 
-### App-level `build.gradle`
+### 4. Run the Project
+- Connect an Android device or set up an emulator
+- Use the Run configuration in IntelliJ IDEA
+- Click the green "Run" button or use the keyboard shortcut (Shift + F10)
+
+## IntelliJ IDEA Configuration
+
+### Recommended Plugins
+- Android Support
+- Gradle
+- Firebase
+- Lombok
+- Material Theme UI
+
+### Gradle Configuration
+Ensure your `build.gradle` files are configured correctly:
+
+#### Project-level `build.gradle`
+```groovy
+buildscript {
+    dependencies {
+        classpath 'com.google.gms:google-services:4.3.15'
+        classpath 'com.android.tools.build:gradle:7.4.2'
+    }
+}
+```
+
+#### App-level `build.gradle`
 ```groovy
 plugins {
-    id 'application'
-    id 'java'
-}
-
-group 'com.example'
-version '1.0-SNAPSHOT'
-
-repositories {
-    mavenCentral()
+    id 'com.android.application'
+    id 'dagger.hilt.android.plugin'
+    id 'com.google.gms.google-services'
 }
 
 dependencies {
-    implementation 'com.squareup.okhttp3:okhttp:4.11.0'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
-}
-
-application {
-    mainClass = 'com.example.RedditApp'
+    // Android core dependencies
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    
+    // Firebase
+    implementation 'com.google.firebase:firebase-auth:21.0.3'
+    implementation 'com.google.firebase:firebase-firestore:24.0.1'
+    
+    // Networking
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    
+    // Dependency Injection
+    implementation 'com.google.dagger:hilt-android:2.40.5'
+    annotationProcessor 'com.google.dagger:hilt-android-compiler:2.40.5'
 }
 ```
+
+## API Testing with Postman
+
+### Postman Setup
+1. Download and install Postman from [postman.com](https://www.postman.com/downloads/)
+2. Import the API collection for this project
+
+### API Endpoints
+We've created a comprehensive Postman collection to test the following endpoints:
+
+#### Authentication
+- `POST /auth/register` - User registration
+- `POST /auth/login` - User login
+- `POST /auth/logout` - User logout
+
+#### Subreddits
+- `GET /subreddits` - List all subreddits
+- `GET /subreddits/{id}` - Get specific subreddit details
+- `POST /subreddits` - Create a new subreddit
+
+#### Posts
+- `GET /posts` - Retrieve posts
+- `GET /posts/{id}` - Get specific post details
+- `POST /posts` - Create a new post
+- `PUT /posts/{id}` - Update a post
+- `DELETE /posts/{id}` - Delete a post
 
 ## Testing
 - Unit Tests: Located in `src/test/java`
-- Instrumentation Tests: Located in `src/Test/java`
+- Instrumentation Tests: Located in `src/androidTest/java`
+- API Tests: Managed through Postman collection
 
-Run tests using:
-```bash
-./gradlew RedditTestApp
-```
+Run tests in IntelliJ IDEA:
+- Right-click on test directories
+- Select "Run Tests"
+
+## Debugging
+IntelliJ IDEA provides powerful debugging tools:
+- Set breakpoints
+- Use step-through debugging
+- Examine variables and call stack
+- Use the integrated debugger for Android apps
 
 ## Contributing
 1. Fork the repository
