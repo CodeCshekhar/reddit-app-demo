@@ -31,7 +31,7 @@ This is a Reddit-like application built using Android development with Gradle as
 ### 1. Clone the Repository
 ```bash
 git clone https://github.com/CodeCshekahr/Reddit-App.git
-cd reddit-clone-app
+cd Reddit-App
 ```
 
 ### 2. Configure Firebase
@@ -40,11 +40,11 @@ cd reddit-clone-app
 - Enable Authentication and Firestore
 
 ### 3. Build the Project
-Open the project in Android Studio and let Gradle sync the dependencies.
+Open the project in Intellij IDE and let Gradle sync the dependencies.
 
 ### 4. Run the App
-- Connect an Android device or start an emulator
-- Click 'Run' in Android Studio
+- Connect an Intellij IDE 
+- Click 'Run' in Intellij IDE 
 
 ## Gradle Configuration
 The project uses Gradle for dependency management and build automation. Key configurations are in `build.gradle` files:
