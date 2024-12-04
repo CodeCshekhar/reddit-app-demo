@@ -29,7 +29,7 @@ This is a Reddit-like application built using App development with Gradle as the
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/CodeCshekahr/Reddit-App.git
+git clone https://github.com/CodeCshekhar/Reddit-App.git
 cd Reddit-App
 ```
 ### 2. Build the Project
@@ -62,7 +62,7 @@ dependencies {
 }
 
 application {
-    mainClass = 'com.electra.RedditApp'
+    mainClass = 'com.example.RedditApp'
 }
 ```
 
@@ -85,4 +85,4 @@ Run tests using:
 ## License
 Distributed under the MIT License. See `LICENSE` for more information.
 
-Project Link: [https://github.com/CodeCshekahr/Reddit-App](https://github.com/CodeCshekahr/Reddit-App)
+Project Link: [https://github.com/CodeCshekhar/Reddit-App](https://github.com/CodeCshekhar/Reddit-App)
