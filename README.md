@@ -55,7 +55,6 @@ cd Reddit-App
 ## IntelliJ IDEA Configuration
 
 ### Recommended Plugins
-- Android Support
 - Gradle
 - Firebase
 - Lombok
@@ -64,7 +63,7 @@ cd Reddit-App
 ### Gradle Configuration
 Ensure your `build.gradle` files are configured correctly:
 
-#### Project-level `build.gradle`
+#### Project-level `build.gradle`- Sample
 ```groovy
 buildscript {
     dependencies {
@@ -74,7 +73,7 @@ buildscript {
 }
 ```
 
-#### App-level `build.gradle`
+#### App-level `build.gradle` - Sample
 ```groovy
 plugins {
     id 'com.android.application'
