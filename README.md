@@ -15,7 +15,6 @@ This is a Reddit-like application built using App development with Gradle as the
 ## Prerequisites
 - IntelliJ IDEA (recommended)
 - Java Development Kit (JDK) 11 or later
-- Android SDK
 - Postman (for API testing)
 
 ## Tech Stack
@@ -41,15 +40,17 @@ cd Reddit-App
 - Select "Open" and navigate to the project directory
 - Allow Gradle to sync and download dependencies
 
-### 3. Configure Firebase
-- Create a Firebase project
-- Add `google-services.json` to the `app` directory
-- Enable Authentication and Firestore
+### 3. Features
+- Authenticate with the Reddit API.
+- Fetch top posts from any subreddit.
+- Submit posts to a subreddit.
+- Save responses to a local file for reference.
 
-### 4. Run the Project
-- Connect an Android device or set up an emulator
-- Use the Run configuration in IntelliJ IDEA
-- Click the green "Run" button or use the keyboard shortcut (Shift + F10)
+### 4. Usage
+1. Run the app:
+   ```bash
+   java -jar RedditApp.jar
+
 
 ## IntelliJ IDEA Configuration
 
@@ -124,7 +125,7 @@ We've created a comprehensive Postman collection to test the following endpoints
 - `POST /posts` - Create a new post
 - `PUT /posts/{id}` - Update a post
 - `DELETE /posts/{id}` - Delete a post
-- Bellow is Sampled Fetched Post!!!!
+- Below is Sampled Fetched Post!!!!
 - ![Sample Fetched Post](https://github.com/user-attachments/assets/ffca6c7c-0af7-4410-9740-47920b0a85a1)
 
 
