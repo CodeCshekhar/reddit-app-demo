@@ -104,6 +104,44 @@ public class RedditAppTest {
 
         // Mock the new call request for subreddit posts
         when(mockClient.newCall(any(Request.class))).thenReturn(new Call() {
+            @NotNull
+            @Override
+            public Call clone() {
+                return null;
+            }
+
+            @NotNull
+            @Override
+            public Timeout timeout() {
+                return null;
+            }
+
+            @Override
+            public boolean isCanceled() {
+                return false;
+            }
+
+            @Override
+            public boolean isExecuted() {
+                return false;
+            }
+
+            @Override
+            public void enqueue(@NotNull Callback callback) {
+
+            }
+
+            @NotNull
+            @Override
+            public Request request() {
+                return null;
+            }
+
+            @Override
+            public void cancel() {
+
+            }
+
             @Override
             public Response execute() throws IOException {
                 return mockResponseObject;
