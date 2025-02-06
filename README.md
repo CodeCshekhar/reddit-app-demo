@@ -55,7 +55,6 @@ cd Reddit-App
 ## IntelliJ IDEA Configuration
 
 ### Recommended Plugins
-- Android Support
 - Gradle
 - Firebase
 - Lombok
@@ -64,7 +63,7 @@ cd Reddit-App
 ### Gradle Configuration
 Ensure your `build.gradle` files are configured correctly:
 
-#### Project-level `build.gradle`
+#### Project-level `build.gradle`- Sample
 ```groovy
 buildscript {
     dependencies {
@@ -74,7 +73,7 @@ buildscript {
 }
 ```
 
-#### App-level `build.gradle`
+#### App-level `build.gradle` - Sample
 ```groovy
 plugins {
     id 'com.android.application'
@@ -125,7 +124,7 @@ We've created a comprehensive Postman collection to test the following endpoints
 - `POST /posts` - Create a new post
 - `PUT /posts/{id}` - Update a post
 - `DELETE /posts/{id}` - Delete a post
-- Below is Sampled Fetched Post!!!!
+- "Below is Sampled Fetched Post!!!!"
 - ![Sample Fetched Post](https://github.com/user-attachments/assets/ffca6c7c-0af7-4410-9740-47920b0a85a1)
 
 
