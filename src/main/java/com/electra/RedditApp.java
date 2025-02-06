@@ -15,6 +15,20 @@ public class RedditApp {
     private static final String PASSWORD = "";
 
     private static String accessToken;
+    private OkHttpClient client;
+
+    // Set the client for testing purposes
+    public void setClient(OkHttpClient client) {
+        this.client = client;
+    }
+
+    // Get the access token for testing purposes
+    public String getAccessToken() {
+        return accessToken;
+    }
+    public String setAccessToken(Object o) {
+        return accessToken;
+    }
 
     public static void main(String[] args) {
         try {
@@ -25,20 +39,18 @@ public class RedditApp {
             if (accessToken != null) {
                 // Step 3: Fetch posts from a subreddit
                 fetchSubredditPosts("Bollywood");
+
+                // Step 4: Post a comment to Reddit
+                postToReddit("Test Title", "Test body of the post.");
             } else {
-                System.err.println("Authentication failed. Cannot fetch posts.");
+                System.err.println("Authentication failed. Cannot fetch posts or post.");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    /**
-     * Authenticates with Reddit's API and retrieves an access token.
-     *
-     * @throws IOException if an I/O error occurs during authentication.
-     */
-    private static void authenticate() throws IOException {
+    public static void authenticate() throws IOException {
         OkHttpClient client = new OkHttpClient();
 
         // Encode client credentials for basic authentication
@@ -84,13 +96,7 @@ public class RedditApp {
         }
     }
 
-    /**
-     * Fetches the top posts from a specified subreddit and prints their titles.
-     *
-     * @param subreddit the name of the subreddit to fetch posts from.
-     * @throws IOException if an I/O error occurs while fetching posts.
-     */
-    private static void fetchSubredditPosts(String subreddit) throws IOException {
+    public static void fetchSubredditPosts(String subreddit) throws IOException {
         if (accessToken == null) {
             System.err.println("Cannot fetch posts without an access token.");
             return;
@@ -124,6 +130,45 @@ public class RedditApp {
                 }
             } else {
                 System.err.println("Failed to fetch subreddit posts: " + response.message());
+                if (response.body() != null) {
+                    System.err.println("Response body: " + response.body().string());
+                }
+            }
+        }
+    }
+
+    // Method to post a comment or create a new post on Reddit
+    public static void postToReddit(String title, String body) throws IOException {
+        if (accessToken == null) {
+            System.err.println("Cannot post without an access token.");
+            return;
+        }
+
+        OkHttpClient client = new OkHttpClient();
+
+        // Prepare the form body with required parameters for creating a post
+        RequestBody formBody = new FormBody.Builder()
+                .add("title", title)
+                .add("selftext", body)
+                .add("sr", "test") // 'test' subreddit, you can change this to your desired subreddit
+                .add("kind", "self") // 'self' indicates it's a text post
+                .build();
+
+        // Build the request to create a post
+        Request request = new Request.Builder()
+                .url("https://oauth.reddit.com/api/submit")
+                .addHeader("Authorization", "Bearer " + accessToken)
+                .addHeader("User-Agent", "RedditApp/1.0")
+                .post(formBody)
+                .build();
+
+        // Execute the request
+        try (Response response = client.newCall(request).execute()) {
+            if (response.isSuccessful() && response.body() != null) {
+                String responseBody = response.body().string();
+                System.out.println("Response from Reddit API (Post creation): " + responseBody);
+            } else {
+                System.err.println("Failed to create post: " + response.message());
                 if (response.body() != null) {
                     System.err.println("Response body: " + response.body().string());
                 }

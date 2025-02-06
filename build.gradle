@@ -14,6 +14,25 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:4.11.0'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
 }
+dependencies {
+    // JUnit 5 for testing
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+
+    // Mockito for mocking
+    testImplementation 'org.mockito:mockito-core:3.9.0'
+
+    // OkHttp (if you need it for mocking HTTP calls)
+    implementation 'com.squareup.okhttp3:okhttp:4.9.1'
+
+    // Gradle test framework (for running the tests)
+    testImplementation 'org.gradle:gradle-test-kit:7.2'
+}
+
+test {
+    useJUnitPlatform()
+}
+
 
 application {
     mainClass = 'com.electra.RedditApp'
