@@ -120,12 +120,14 @@ We've created a comprehensive Postman collection to test the following endpoints
 
 #### Posts
 - `GET /posts` - Retrieve posts
+-
+- ![Sample Fetched Post](https://github.com/user-attachments/assets/ffca6c7c-0af7-4410-9740-47920b0a85a1)
+- 
 - `GET /posts/{id}` - Get specific post details
 - `POST /posts` - Create a new post
 - `PUT /posts/{id}` - Update a post
 - `DELETE /posts/{id}` - Delete a post
 - "Below is Sampled Fetched Post!!!!"
-- ![Sample Fetched Post](https://github.com/user-attachments/assets/ffca6c7c-0af7-4410-9740-47920b0a85a1)
 
 
 ## Testing
